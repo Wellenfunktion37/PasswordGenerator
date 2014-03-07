@@ -1,5 +1,3 @@
-
-
 import java.awt.*;
 import javax.swing.*;
 
@@ -14,42 +12,50 @@ public class Testclass extends JFrame {
     JComboBox passwordSpecies;
     JTextArea passwordScreen;
     JScrollPane sp;
+    JButton createButton;
 
 
     public Testclass() {
-        c = getContentPane();
-        c.setLayout(new BorderLayout());
+         c = getContentPane();
 
+        /**
+         * Flow Layout
+         * TODO change Layout
+         * TODO ScrollPane does not work
+         */
+        c.setLayout(new FlowLayout());
         passwordScreen = new JTextArea("Space to show passwords");
 
-
         //Sets Font
-        Font font = new Font("Arial", Font.PLAIN , 12);
-        passwordScreen.setFont(font);
+        Font font = new Font("Arial", Font.BOLD, 12);
         sp = new JScrollPane(passwordScreen);
 
         //Sets page layout
-
         passwordScreen.setLineWrap(true);
         passwordScreen.setWrapStyleWord(true);
 
         //adds the components
-        c.add(passwordScreen, BorderLayout.CENTER);
+        c.add(passwordScreen);
         c.add(sp);
+
+        createButton = new JButton("create Password");
+        c.add(createButton);
+
 
 
         String[] species = new String[] {"Letters", "Numbers", "Good to remember"};
         passwordSpecies = new JComboBox(species);
-        c.add(passwordSpecies, BorderLayout.NORTH);
+        c.add(passwordSpecies);
     }
 
 
     public static void main(String[] args) {
-        Testclass Window = new Testclass();
-        Window.setTitle("Password Generator");
-        Window.setSize(240, 160);
-        Window.setVisible(true);
-        Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Testclass gui = new Testclass();
+        gui.setTitle("Password Generator");
+        gui.setSize(240, 160);
+        gui.setVisible(true);
+        gui.setResizable(false);
+        gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
 }

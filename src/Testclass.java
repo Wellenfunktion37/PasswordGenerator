@@ -19,37 +19,47 @@ public class Testclass extends JFrame {
          c = getContentPane();
 
         /**
-         * Flow Layout
-         * TODO change Layout
-         * TODO ScrollPane does not work
+         * Adds Textarea and its properties
          */
         c.setLayout(new BoxLayout(c, BoxLayout.Y_AXIS));
         passwordScreen = new JTextArea("Space to show passwords", 5, 10);
+        passwordScreen.setEditable(false);
 
-        //Sets Font
+        //sets Font
         Font font = new Font("Arial", Font.BOLD, 12);
         passwordScreen.setFont(font);
 
-        //Sets page layout
+        //sets page layout
         passwordScreen.setLineWrap(true);
         passwordScreen.setWrapStyleWord(true);
 
-        sp = new JScrollPane(passwordScreen);
 
-        //adds the components
-        c.add(sp);
-
-        createButton = new JButton("create Password");
-        c.add(createButton);
-
-
-
+        /**
+         * Adds comobo Box
+         */
         String[] species = new String[] {"Letters", "Numbers", "Good to remember"};
         passwordSpecies = new JComboBox(species);
         c.add(passwordSpecies);
+
+        /**
+         * Adds scroll pane to the Text Area
+         */
+        sp = new JScrollPane(passwordScreen);
+        c.add(sp);
+
+
+        /**
+         * Adds 'create' button
+         */
+        createButton = new JButton("create Password");
+        c.add(createButton);
     }
 
 
+    /**
+     * Main Method
+     * @param args
+     */
     public static void main(String[] args) {
         Testclass gui = new Testclass();
         gui.setTitle("Password Generator");

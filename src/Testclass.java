@@ -23,19 +23,20 @@ public class Testclass extends JFrame {
          * TODO change Layout
          * TODO ScrollPane does not work
          */
-        c.setLayout(new FlowLayout());
-        passwordScreen = new JTextArea("Space to show passwords");
+        c.setLayout(new BoxLayout(c, BoxLayout.Y_AXIS));
+        passwordScreen = new JTextArea("Space to show passwords", 5, 10);
 
         //Sets Font
         Font font = new Font("Arial", Font.BOLD, 12);
-        sp = new JScrollPane(passwordScreen);
+        passwordScreen.setFont(font);
 
         //Sets page layout
         passwordScreen.setLineWrap(true);
         passwordScreen.setWrapStyleWord(true);
 
+        sp = new JScrollPane(passwordScreen);
+
         //adds the components
-        c.add(passwordScreen);
         c.add(sp);
 
         createButton = new JButton("create Password");

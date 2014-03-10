@@ -13,7 +13,7 @@ public class Testclass extends JFrame {
     JTextArea passwordScreen;
     JScrollPane sp;
     JButton createButton;
-    JSlider passwordLength;
+    JSlider passwordLengthSlider;
 
 
     public Testclass() {
@@ -32,10 +32,11 @@ public class Testclass extends JFrame {
         /**
          * Adds JSlider to change password length
          */
-        passwordLength = new JSlider( 0, 100, 50 );
-        passwordLength.setPaintTicks( true );
-        passwordLength.setMinorTickSpacing(5);
-        c.add( passwordLength );
+        passwordLengthSlider = new JSlider( 0, 100, 50 );
+        passwordLengthSlider.setPaintTicks( true );
+        passwordLengthSlider.setMinorTickSpacing(5);
+        c.add( passwordLengthSlider );
+
 
         /**
          * Adds Textarea and its properties

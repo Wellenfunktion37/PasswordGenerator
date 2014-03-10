@@ -21,13 +21,13 @@ public class Testclass extends JFrame {
 
         c.setLayout(new BoxLayout(c, BoxLayout.Y_AXIS));
 
-
         /**
          * Adds comobo Box
          */
         String[] species = new String[] {"Letters", "Numbers", "Letters & Numbers", "Good to remember", "Random"};
         passwordSpecies = new JComboBox(species);
         c.add(passwordSpecies);
+        passwordSpecies.setToolTipText("Choose password species");
 
         /**
          * Adds JSlider to change password length
@@ -36,6 +36,7 @@ public class Testclass extends JFrame {
         passwordLengthSlider.setPaintTicks( true );
         passwordLengthSlider.setMinorTickSpacing(5);
         c.add( passwordLengthSlider );
+        passwordLengthSlider.setToolTipText("Move Slidebar to change password length");
 
 
         /**
@@ -64,6 +65,7 @@ public class Testclass extends JFrame {
          */
         createButton = new JButton("Create Password");
         c.add(createButton);
+        createButton.setToolTipText("Push Button to create a new password");
     }
 
 

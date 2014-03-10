@@ -37,7 +37,7 @@ public class Testclass extends JFrame {
         /**
          * Adds comobo Box
          */
-        String[] species = new String[] {"Letters", "Numbers", "Good to remember"};
+        String[] species = new String[] {"Letters", "Numbers", "Letters & Numbers", "Good to remember", "Random"};
         passwordSpecies = new JComboBox(species);
         c.add(passwordSpecies);
 

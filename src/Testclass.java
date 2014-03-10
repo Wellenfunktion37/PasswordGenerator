@@ -13,15 +13,33 @@ public class Testclass extends JFrame {
     JTextArea passwordScreen;
     JScrollPane sp;
     JButton createButton;
+    JSlider passwordLength;
 
 
     public Testclass() {
          c = getContentPane();
 
+        c.setLayout(new BoxLayout(c, BoxLayout.Y_AXIS));
+
+
+        /**
+         * Adds comobo Box
+         */
+        String[] species = new String[] {"Letters", "Numbers", "Letters & Numbers", "Good to remember", "Random"};
+        passwordSpecies = new JComboBox(species);
+        c.add(passwordSpecies);
+
+        /**
+         * Adds JSlider to change password length
+         */
+        passwordLength = new JSlider( 0, 100, 50 );
+        passwordLength.setPaintTicks( true );
+        passwordLength.setMinorTickSpacing(5);
+        c.add( passwordLength );
+
         /**
          * Adds Textarea and its properties
          */
-        c.setLayout(new BoxLayout(c, BoxLayout.Y_AXIS));
         passwordScreen = new JTextArea("Space to show passwords", 5, 10);
         passwordScreen.setEditable(false);
 
@@ -33,14 +51,6 @@ public class Testclass extends JFrame {
         passwordScreen.setLineWrap(true);
         passwordScreen.setWrapStyleWord(true);
 
-
-        /**
-         * Adds comobo Box
-         */
-        String[] species = new String[] {"Letters", "Numbers", "Letters & Numbers", "Good to remember", "Random"};
-        passwordSpecies = new JComboBox(species);
-        c.add(passwordSpecies);
-
         /**
          * Adds scroll pane to the Text Area
          */
@@ -51,7 +61,7 @@ public class Testclass extends JFrame {
         /**
          * Adds 'create' button
          */
-        createButton = new JButton("create Password");
+        createButton = new JButton("Create Password");
         c.add(createButton);
     }
 
@@ -63,7 +73,7 @@ public class Testclass extends JFrame {
     public static void main(String[] args) {
         Testclass gui = new Testclass();
         gui.setTitle("Password Generator");
-        gui.setSize(240, 160);
+        gui.setSize(240, 240);
         gui.setVisible(true);
         gui.setResizable(false);
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

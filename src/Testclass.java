@@ -7,6 +7,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.List;
 
 /**
@@ -22,7 +25,7 @@ public class Testclass extends JFrame {
     JScrollPane sp;
     JButton createButton;
     JSlider passwordLengthSlider;
-    JLabel passwordLength;
+    JProgressBar passwordSecurityLevel;
 
     public Testclass() {
          c = getContentPane();
@@ -60,17 +63,30 @@ public class Testclass extends JFrame {
 
 
         /**
-         * Adds a JLabel to show the password length
+         * Adds a progressbar to visualize the password security level
          */
-        passwordLength = new JLabel("Length: " + passwordLengthSlider.getValue());
-        c.add(passwordLength);
-        passwordLength.setBorder(new EmptyBorder(0,0,10,0));
+        passwordSecurityLevel = new JProgressBar();
+        c.add(passwordSecurityLevel);
+
+        //allows to show Strings in progressbar
+        passwordSecurityLevel.setStringPainted(true);
+
+        //shows password length in progressbar
+        passwordSecurityLevel.setString("Length: " + passwordLengthSlider.getValue());
+        passwordSecurityLevel.setValue(passwordLengthSlider.getValue());
+        passwordSecurityLevel.setMaximum(100);
+        passwordSecurityLevel.setMinimum(0);
+
         passwordLengthSlider.addChangeListener(new ChangeListener() {
             @Override
             public void stateChanged(ChangeEvent e) {
-                passwordLength.setText("Length: " + passwordLengthSlider.getValue());
+                passwordSecurityLevel.setValue(passwordLengthSlider.getValue());
+                passwordSecurityLevel.setString("Length: " + passwordSecurityLevel.getValue());
             }
         });
+
+        passwordSecurityLevel.setBorder(new EmptyBorder(0, 0, 10, 0));
+
 
         /**
          * Adds Textarea and its properties

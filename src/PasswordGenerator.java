@@ -1,10 +1,16 @@
 import java.util.List;
 
 /**
- * Created by philipp on 13.03.14.
+ * Generates Password
  */
 public class PasswordGenerator {
 
+    /**
+     *
+     * @param sources chosen kind of password
+     * @param length password length
+     * @return the generated password
+     */
     public static String generate(PasswordSource[] sources, int length) {
         String password = "";
         for (int i = 0; i <= length; i++) {

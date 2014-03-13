@@ -60,7 +60,7 @@ public class Testclass extends JFrame {
 
 
         /**
-         *
+         * Adds a JLabel to show the password length
          */
         passwordLength = new JLabel("Length: " + passwordLengthSlider.getValue());
         c.add(passwordLength);
@@ -112,6 +112,10 @@ public class Testclass extends JFrame {
         createButton.setToolTipText("Push Button to create a new password");
     }
 
+    /**
+     * private class to select the password species
+     */
+
     private class SelectOption {
         private String name;
         private PasswordSource[] sources;
@@ -129,6 +133,11 @@ public class Testclass extends JFrame {
             return this.name;
         }
     }
+
+    /**
+     * Creates password depending on length and source
+     * @param sources
+     */
 
     public void generatePassword(PasswordSource[] sources) {
         String password = PasswordGenerator.generate(sources, passwordLengthSlider.getValue());

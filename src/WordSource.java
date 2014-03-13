@@ -4,6 +4,9 @@ import java.util.Scanner;
 
 public class WordSource extends PasswordSource {
 
+    /**
+     * Reads words out of words.txt to create a 'good to remember' password
+     */
     public WordSource() {
         try {
             Scanner scanner = new Scanner(new File("words.txt"));

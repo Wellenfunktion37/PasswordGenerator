@@ -1,4 +1,5 @@
 public class SpecialCharSource extends PasswordSource {
+
     public SpecialCharSource() {
         // add special characters part 1
         for (int i = 33; i <= 47; i++) {

@@ -36,7 +36,7 @@ public class Testclass extends JFrame {
                 new SelectOption("Letters", new PasswordSource[] { new LetterSource() }),
                 new SelectOption("Numbers", new PasswordSource[] { new NumberSource() }),
                 new SelectOption("Letters & Numbers", new PasswordSource[] { new LetterSource(), new NumberSource()}),
-                //new SelectOption("Good to remember", ),
+                new SelectOption("Good to remember", new PasswordSource[] { new WordSource(), new SpecialCharSource() }),
                 new SelectOption("Special characters", new PasswordSource[] { new SpecialCharSource() }),
                 new SelectOption("Random", new PasswordSource[] { new LetterSource(), new NumberSource(), new SpecialCharSource() })
         };
@@ -48,7 +48,7 @@ public class Testclass extends JFrame {
         /**
          * Adds JSlider to change password length
          */
-        passwordLengthSlider = new JSlider( 5, 100, 25 );
+        passwordLengthSlider = new JSlider( 5, 100, 12 );
         passwordLengthSlider.setPaintTicks(true);
         passwordLengthSlider.setPaintLabels(true);
         passwordLengthSlider.setLabelTable(passwordLengthSlider.createStandardLabels(22));

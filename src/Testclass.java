@@ -2,6 +2,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import java.util.List;
 
@@ -18,6 +22,7 @@ public class Testclass extends JFrame {
     JScrollPane sp;
     JButton createButton;
     JSlider passwordLengthSlider;
+    JLabel passwordLength;
 
     public Testclass() {
          c = getContentPane();
@@ -43,7 +48,7 @@ public class Testclass extends JFrame {
         /**
          * Adds JSlider to change password length
          */
-        passwordLengthSlider = new JSlider( 5, 50, 25 );
+        passwordLengthSlider = new JSlider( 5, 100, 25 );
         passwordLengthSlider.setPaintTicks(true);
         passwordLengthSlider.setPaintLabels(true);
         passwordLengthSlider.setLabelTable(passwordLengthSlider.createStandardLabels(22));
@@ -52,6 +57,19 @@ public class Testclass extends JFrame {
         c.add( passwordLengthSlider );
         passwordLengthSlider.setToolTipText("Move Slidebar to change password length");
 
+
+        /**
+         *
+         */
+        passwordLength = new JLabel("Length: " + passwordLengthSlider.getValue());
+        c.add(passwordLength);
+        passwordLength.setBorder(new EmptyBorder(0,0,10,0));
+        passwordLengthSlider.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                passwordLength.setText("Length: " + passwordLengthSlider.getValue());
+            }
+        });
 
         /**
          * Adds Textarea and its properties

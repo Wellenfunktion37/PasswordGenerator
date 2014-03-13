@@ -1,5 +1,9 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
+
+import java.util.List;
 
 /**
  * Program to generate secure passwords
@@ -15,7 +19,6 @@ public class Testclass extends JFrame {
     JButton createButton;
     JSlider passwordLengthSlider;
 
-
     public Testclass() {
          c = getContentPane();
 
@@ -24,7 +27,15 @@ public class Testclass extends JFrame {
         /**
          * Adds comobo Box
          */
-        String[] species = new String[] {"Letters", "Numbers", "Letters & Numbers", "Good to remember", "Random"};
+        SelectOption[] species = new SelectOption[] {
+                new SelectOption("Letters", new PasswordSource[] { new LetterSource() }),
+                new SelectOption("Numbers", new PasswordSource[] { new NumberSource() }),
+                new SelectOption("Letters & Numbers", new PasswordSource[] { new LetterSource(), new NumberSource()}),
+                //new SelectOption("Good to remember", ),
+                new SelectOption("Special characters", new PasswordSource[] { new SpecialCharSource() }),
+                new SelectOption("Random", new PasswordSource[] { new LetterSource(), new NumberSource(), new SpecialCharSource() })
+        };
+
         passwordSpecies = new JComboBox(species);
         c.add(passwordSpecies);
         passwordSpecies.setToolTipText("Choose password species");
@@ -32,9 +43,12 @@ public class Testclass extends JFrame {
         /**
          * Adds JSlider to change password length
          */
-        passwordLengthSlider = new JSlider( 0, 100, 50 );
-        passwordLengthSlider.setPaintTicks( true );
+        passwordLengthSlider = new JSlider( 5, 50, 25 );
+        passwordLengthSlider.setPaintTicks(true);
+        passwordLengthSlider.setPaintLabels(true);
+        passwordLengthSlider.setLabelTable(passwordLengthSlider.createStandardLabels(22));
         passwordLengthSlider.setMinorTickSpacing(5);
+
         c.add( passwordLengthSlider );
         passwordLengthSlider.setToolTipText("Move Slidebar to change password length");
 
@@ -46,7 +60,7 @@ public class Testclass extends JFrame {
         passwordScreen.setEditable(false);
 
         //sets Font
-        Font font = new Font("Arial", Font.BOLD, 12);
+        Font font = new Font("Arial", Font.PLAIN, 12);
         passwordScreen.setFont(font);
 
         //sets page layout
@@ -64,10 +78,43 @@ public class Testclass extends JFrame {
          * Adds 'create' button
          */
         createButton = new JButton("Create Password");
+        createButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Object item = passwordSpecies.getSelectedItem();
+                if (item instanceof SelectOption) {
+                    SelectOption option = (SelectOption)item;
+                    generatePassword(option.getSources());
+                }
+            }
+        });
+
         c.add(createButton);
         createButton.setToolTipText("Push Button to create a new password");
     }
 
+    private class SelectOption {
+        private String name;
+        private PasswordSource[] sources;
+
+        public SelectOption(String name, PasswordSource[] sources) {
+            this.name = name;
+            this.sources = sources;
+        }
+
+        public PasswordSource[] getSources() {
+            return this.sources;
+        }
+
+        public String toString() {
+            return this.name;
+        }
+    }
+
+    public void generatePassword(PasswordSource[] sources) {
+        String password = PasswordGenerator.generate(sources, passwordLengthSlider.getValue());
+        passwordScreen.setText(password);
+    }
 
     /**
      * Main Method

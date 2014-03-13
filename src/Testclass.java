@@ -38,7 +38,8 @@ public class Testclass extends JFrame {
                 new SelectOption("Letters & Numbers", new PasswordSource[] { new LetterSource(), new NumberSource()}),
                 new SelectOption("Good to remember", new PasswordSource[] { new WordSource(), new SpecialCharSource() }),
                 new SelectOption("Special characters", new PasswordSource[] { new SpecialCharSource() }),
-                new SelectOption("Random", new PasswordSource[] { new LetterSource(), new NumberSource(), new SpecialCharSource() })
+                new SelectOption("Random", new PasswordSource[] { new LetterSource(), new NumberSource(),
+                                           new SpecialCharSource(), new WordSource() })
         };
 
         passwordSpecies = new JComboBox(species);

@@ -1,3 +1,5 @@
+//TODO Länge der Zufallsworte begrenzen
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

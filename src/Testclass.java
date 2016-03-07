@@ -1,4 +1,5 @@
 //TODO Länge der Zufallsworte begrenzen
+//TODO GUI Erstellung in eigene Klasse auslagern
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -30,7 +31,7 @@ public class Testclass extends JFrame {
     JProgressBar passwordSecurityLevel;
 
     public Testclass() {
-         c = getContentPane();
+        c = getContentPane();
 
         c.setLayout(new BoxLayout(c, BoxLayout.Y_AXIS));
 
@@ -41,7 +42,7 @@ public class Testclass extends JFrame {
                 new SelectOption("Letters", new PasswordSource[] { new LetterSource() }),
                 new SelectOption("Numbers", new PasswordSource[] { new NumberSource() }),
                 new SelectOption("Letters & Numbers", new PasswordSource[] { new LetterSource(), new NumberSource()}),
-                new SelectOption("Good to remember", new PasswordSource[] { new WordSource(), new SpecialCharSource() }),
+                new SelectOption("Words", new PasswordSource[] { new WordSource(), new SpecialCharSource() }),
                 new SelectOption("Special characters", new PasswordSource[] { new SpecialCharSource() }),
                 new SelectOption("Random", new PasswordSource[] { new LetterSource(), new NumberSource(),
                                            new SpecialCharSource(), new WordSource() })
@@ -93,7 +94,7 @@ public class Testclass extends JFrame {
         /**
          * Adds Textarea and its properties
          */
-        passwordScreen = new JTextArea("Space to show passwords", 5, 10);
+        passwordScreen = new JTextArea("No Password yet created", 5, 10);
         passwordScreen.setEditable(false);
 
         //sets Font
@@ -156,7 +157,6 @@ public class Testclass extends JFrame {
      * Creates password depending on length and source
      * @param sources
      */
-
     public void generatePassword(PasswordSource[] sources) {
         String password = PasswordGenerator.generate(sources, passwordLengthSlider.getValue());
         passwordScreen.setText(password);

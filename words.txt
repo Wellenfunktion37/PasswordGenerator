@@ -1,2 +1,8 @@
-Wurst,Buch,Kugelschreiber,Flasche,Bilschirm,Lineal,Physik,Chemie,Mathematik,Zettel,Aal,Fisch,Forelle,Karton,Stift,Block,Papier,Schreibtisch,Maus,Hamster,
-Java,Wasser,Biologie,Periode,Klasse,Defekt,Neutron,Proton,Käfig,Essen,Trinken,Senf,Teller,Tasse,Kaffee,Antenne,Glas,Brille,Fuß,Bein,Arm,Finger,Ring,Nagel,Hammer,Schraube,Gehen,Stehen,Laufen,Rennen,Konserve,Aufstehen,Bett,Schlafen,Grau,Weiß,Rot,Blau,Grün,Rot,Gelb,Pink,Rosa,Blume,Rose,Tuple,Gitter,Beugung,Spalt,Alles_Normel,Splasher,Spleaser,Paris,Jerry_B,Den_Pokal_Hab_ich_gearned,erstmal_downwalken
+Ich,
+du,
+er,
+sie,
+es,
+gehen,
+stehen,
+liegen

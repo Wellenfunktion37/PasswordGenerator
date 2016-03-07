@@ -25,7 +25,7 @@ public class Testclass extends JFrame {
     JComboBox passwordSpecies;
     JTextArea passwordScreen;
     JScrollPane sp;
-    JButton createButton;
+    JButton createPasswordButton;
     JSlider passwordLengthSlider;
     JProgressBar passwordSecurityLevel;
 
@@ -97,7 +97,7 @@ public class Testclass extends JFrame {
         passwordScreen.setEditable(false);
 
         //sets Font
-        Font font = new Font("Arial", Font.PLAIN, 12);
+        Font font = new Font("Helvetica", Font.PLAIN, 15);
         passwordScreen.setFont(font);
 
         //sets page layout
@@ -112,10 +112,10 @@ public class Testclass extends JFrame {
 
 
         /**
-         * Adds 'create' button
+         *'create' button
          */
-        createButton = new JButton("Create Password");
-        createButton.addActionListener(new ActionListener() {
+        createPasswordButton = new JButton("Create Password");
+        createPasswordButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Object item = passwordSpecies.getSelectedItem();
@@ -126,8 +126,8 @@ public class Testclass extends JFrame {
             }
         });
 
-        c.add(createButton);
-        createButton.setToolTipText("Push Button to create a new password");
+        c.add(createPasswordButton);
+        createPasswordButton.setToolTipText("Push Button to create a new password");
     }
 
     /**

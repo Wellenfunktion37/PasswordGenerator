@@ -10,7 +10,7 @@ public class WordSource extends PasswordSource {
     public WordSource() {
         try {
             Scanner scanner = new Scanner(new File("words.txt"));
-            scanner.useDelimiter(",");
+            scanner.useDelimiter("\n");
             while (scanner.hasNext()) {
                 chars.add(scanner.next());
             }
